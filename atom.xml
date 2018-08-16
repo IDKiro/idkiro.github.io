@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.idkiro.xyz/"/>
-  <updated>2018-08-07T09:27:59.778Z</updated>
+  <updated>2018-08-08T06:32:44.290Z</updated>
   <id>https://www.idkiro.xyz/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.idkiro.xyz/2018/08/07/%E5%BC%82%E5%BA%A6%E7%A5%9E%E5%89%912%E6%88%98%E6%96%97%E5%90%8E%E5%AF%B9%E8%AF%9D%E6%9F%A5%E8%AF%A2%E5%B7%A5%E5%85%B7/"/>
     <id>https://www.idkiro.xyz/2018/08/07/异度神剑2战斗后对话查询工具/</id>
     <published>2018-08-07T09:23:14.000Z</published>
-    <updated>2018-08-07T09:27:59.778Z</updated>
+    <updated>2018-08-08T06:32:44.290Z</updated>
     
     <content type="html"><![CDATA[<p>受人委托写的一个用于筛选并播放异度神剑2各人物战斗后的对话的工具</p><a id="more"></a><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>根据选择的人物筛选并播放相关角色的战斗后语音</p><img src="/2018/08/07/异度神剑2战斗后对话查询工具/step1.png"><h2 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h2><ol><li>切换中文/日文</li><li>悬停在选项上可直接显示另一语言的文本</li><li>点击角色头像选择最多三个角色</li><li>筛选选择角色的相关对话组</li><li>播放对话组内的所有对话并显示相应的文本</li><li>双击文本可以播放该文本的语音</li><li>支持常见的播放器操作</li></ol><h2 id="Instruction"><a href="#Instruction" class="headerlink" title="Instruction"></a>Instruction</h2><h4 id="如何筛选对话组："><a href="#如何筛选对话组：" class="headerlink" title="如何筛选对话组："></a>如何筛选对话组：</h4><ol><li>程序运行后会自动加载所有可选角色的头像和名字，点击角色头像便可以进行筛选</li><li>筛选后和该角色无相关对话的角色会消失，对话组列表则会同时筛选只与当前选择角色有关的对话组</li><li>对话组最多有三个角色参与，筛选也最多可选择三个角色，筛选选中的角色会根据选择顺序显示在对话组列表上方</li><li>点击重置选择按钮可以清楚所有角色的选择，恢复筛选前的状态</li></ol><h4 id="播放相关的操作："><a href="#播放相关的操作：" class="headerlink" title="播放相关的操作："></a>播放相关的操作：</h4><ol><li>选择对话组以后默认按对话组内语音顺序播放语音</li><li>点击循环模式切换按钮切换至列表循环和单语音循环</li><li>可以单击上一首、播放\暂停、下一首按钮进行常用的播放器操作，播放进度条支持拖动，音量支持拖动调整和静音</li></ol><h4 id="语言相关："><a href="#语言相关：" class="headerlink" title="语言相关："></a>语言相关：</h4><ol><li>在语言选择栏中可以选择中文\日文，选择以后界面上的文字会自动切换语言</li><li>悬停在角色、对话组、语音文本上时可以显示另一种语言的文本</li></ol><h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><ol><li>悬停在标题上可以查看本程序的staff</li></ol><h2 id="Development-tools"><a href="#Development-tools" class="headerlink" title="Development tools:"></a>Development tools:</h2><p>Qt 5.9.3</p><p>Visual Studio 2017</p><h2 id="Developer"><a href="#Developer" class="headerlink" title="Developer"></a>Developer</h2><h4 id="数据挖掘"><a href="#数据挖掘" class="headerlink" title="数据挖掘:"></a>数据挖掘:</h4><p>@Moosehunter(Xenoblade Subreddit Discord)</p><h4 id="对话听写与翻译"><a href="#对话听写与翻译" class="headerlink" title="对话听写与翻译:"></a>对话听写与翻译:</h4><p>@vinsanityvc(NGA)</p><p>@takamana(stage1st)</p><h4 id="游戏内对话确认协助"><a href="#游戏内对话确认协助" class="headerlink" title="游戏内对话确认协助:"></a>游戏内对话确认协助:</h4><p>@天天の幻想(Baidu Tieba: 异度之刃)</p><p>@nanami_c(Baidu Tieba: 异度之刃)</p><p>@黑礼帽的誓言(Baidu Tieba: 异度之刃)</p><h4 id="主程序"><a href="#主程序" class="headerlink" title="主程序:"></a>主程序:</h4><p>@IDKiro(NS in ZJU QQ Group)</p><h4 id="特别感谢"><a href="#特别感谢" class="headerlink" title="特别感谢:"></a>特别感谢:</h4><p>@TheKjozk(YouTube)</p><p>Monolith Soft &amp; Nintendo</p>]]></content>
     
@@ -33,8 +33,6 @@
     
       <category term="文档" scheme="https://www.idkiro.xyz/categories/%E6%96%87%E6%A1%A3/"/>
     
-    
-      <category term="编程" scheme="https://www.idkiro.xyz/tags/%E7%BC%96%E7%A8%8B/"/>
     
       <category term="工具" scheme="https://www.idkiro.xyz/tags/%E5%B7%A5%E5%85%B7/"/>
     
@@ -49,13 +47,13 @@
     <link href="https://www.idkiro.xyz/2018/03/28/shadowsocks-manager%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC/"/>
     <id>https://www.idkiro.xyz/2018/03/28/shadowsocks-manager一键安装脚本/</id>
     <published>2018-03-28T08:49:26.000Z</published>
-    <updated>2018-08-07T09:25:22.536Z</updated>
+    <updated>2018-08-16T07:59:13.300Z</updated>
     
-    <content type="html"><![CDATA[<p>个人写的shadowsocks-manager一键安装脚本，可以在CentOS 7上一键部署shadowsocks-manager管理面板和节点</p><a id="more"></a><p>系统要求：CentOS</p><p>内存要求：管理面板≥1G，节点≥256M</p><p>依赖：wget</p><p><strong>特性：</strong></p><ol><li>管理面板安装完整版，节点安装tiny版，降低节点的安装内存要求</li><li>安装时可自定义加密方式、密码、端口、邮箱</li><li>自动配置开机自启</li></ol><h3 id="安装方法："><a href="#安装方法：" class="headerlink" title="安装方法："></a>安装方法：</h3><p>复制下面的指令粘贴到vps终端中，按照提示进行操作</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/IDKiro/ssmgr-install/master/ssmgr-install.sh</span><br><span class="line">chmod +x ssmgr-install.sh</span><br><span class="line">./ssmgr-install.sh</span><br></pre></td></tr></table></figure><p>支付宝、图标等参照官方wiki配置</p><p><a href="https://github.com/shadowsocks/shadowsocks-manager/wiki" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-manager/wiki</a></p><p><strong>TODO:</strong></p><ol><li>安装时配置支付功能</li><li>其他系统支持</li></ol>]]></content>
+    <content type="html"><![CDATA[<p>个人写的shadowsocks-manager一键安装脚本，可以在CentOS上一键部署shadowsocks-manager管理面板和节点</p><a id="more"></a><h1 id="shadowsocks-manager-一键安装脚本"><a href="#shadowsocks-manager-一键安装脚本" class="headerlink" title="shadowsocks-manager 一键安装脚本"></a>shadowsocks-manager 一键安装脚本</h1><p>系统要求：CentOS</p><p>内存要求：管理面板≥1G，节点≥256M</p><p>依赖：wget</p><h3 id="特性："><a href="#特性：" class="headerlink" title="特性："></a>特性：</h3><ol><li>管理面板安装完整版，节点安装tiny版，降低节点的安装内存要求</li><li>安装时可自定义加密方式、密码、端口、邮箱</li><li>自动配置开机自启</li><li>x64可选择安装和启用魔改版BBR</li></ol><h3 id="安装方法："><a href="#安装方法：" class="headerlink" title="安装方法："></a>安装方法：</h3><p>复制下面的指令粘贴到vps终端中，按照提示进行操作</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate https://raw.githubusercontent.com/IDKiro/ssmgr-install/master/ssmgr-install.sh</span><br><span class="line">chmod +x ssmgr-install.sh</span><br><span class="line">./ssmgr-install.sh</span><br></pre></td></tr></table></figure><p>如选择安装和启用魔改BBR，需要重启后再次运行脚本: <code>./ssmgr-install.sh</code>，并按照提示选择正确的选项</p><h3 id="其他设置："><a href="#其他设置：" class="headerlink" title="其他设置："></a>其他设置：</h3><p>支付宝、图标等参照官方wiki配置</p><p><a href="https://github.com/shadowsocks/shadowsocks-manager/wiki" target="_blank" rel="noopener">https://github.com/shadowsocks/shadowsocks-manager/wiki</a></p><h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO:"></a>TODO:</h3><ol><li>安装时配置支付功能</li><li>其他系统支持</li></ol>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;个人写的shadowsocks-manager一键安装脚本，可以在CentOS 7上一键部署shadowsocks-manager管理面板和节点&lt;/p&gt;
+      &lt;p&gt;个人写的shadowsocks-manager一键安装脚本，可以在CentOS上一键部署shadowsocks-manager管理面板和节点&lt;/p&gt;
     
     </summary>
     
@@ -64,11 +62,9 @@
     
       <category term="SS" scheme="https://www.idkiro.xyz/tags/SS/"/>
     
-      <category term="编程" scheme="https://www.idkiro.xyz/tags/%E7%BC%96%E7%A8%8B/"/>
-    
       <category term="脚本" scheme="https://www.idkiro.xyz/tags/%E8%84%9A%E6%9C%AC/"/>
     
-      <category term="shadowsocks-manager" scheme="https://www.idkiro.xyz/tags/shadowsocks-manager/"/>
+      <category term="ssmgr" scheme="https://www.idkiro.xyz/tags/ssmgr/"/>
     
   </entry>
   
@@ -168,9 +164,9 @@
       <category term="教程" scheme="https://www.idkiro.xyz/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="SS" scheme="https://www.idkiro.xyz/tags/SS/"/>
-    
       <category term="主机游戏" scheme="https://www.idkiro.xyz/tags/%E4%B8%BB%E6%9C%BA%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="SS" scheme="https://www.idkiro.xyz/tags/SS/"/>
     
       <category term="联机" scheme="https://www.idkiro.xyz/tags/%E8%81%94%E6%9C%BA/"/>
     
