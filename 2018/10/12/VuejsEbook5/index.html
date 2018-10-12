@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——路由管理器"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——路由管理器</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-12</span>
+            <span class="time">13:26:37</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为 Vue 项目的路由管理器。</p>
+<a id="more"></a>
+<h1 id="路由管理器简述"><a href="#路由管理器简述" class="headerlink" title="路由管理器简述"></a>路由管理器简述</h1><p>Vue Router 是 Vue.js 官方的路由管理器。</p>
+<p><code>router</code> 文件夹下的 <code>index.js</code> 文件为路由管理器组件的入口文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Guide <span class="keyword">from</span> <span class="string">'@/components/Guide'</span></span><br><span class="line"><span class="keyword">import</span> Ebook <span class="keyword">from</span> <span class="string">'@/components/Ebook'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">// 路由指向路径</span></span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      <span class="comment">// 路由名称，可以不命名</span></span><br><span class="line">      name: <span class="string">'Guide'</span>,</span><br><span class="line">      <span class="comment">// 路由指向组件</span></span><br><span class="line">      component: Guide</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/ebook'</span>,</span><br><span class="line">      name: <span class="string">'Ebook'</span>,</span><br><span class="line">      component: Ebook</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>创建路由组件实例时，需要给每个路由对象指定相对于主页的路径和加载的页面组件。本项目的根路径为书架，加载Guide组件，<code>ebook</code> 路径为阅读页面，加载 <code>Ebook</code> 组件，由路由管理器控制加载的页面组件也需要先使用 <code>import</code> 进行导入。</p>
+<h2 id="项目中的路由使用"><a href="#项目中的路由使用" class="headerlink" title="项目中的路由使用"></a>项目中的路由使用</h2><p>本项目涉及到路由的部分较少，分别为选择书籍后转到阅读页面(Ebook组件)，在标题栏中点击返回按钮返回书架页面(Guide组件).</p>
+<p><code>TitleBar.vue</code> 中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">back () &#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'setTitleAndMenuShow'</span>, <span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">this</span>.$router.push(<span class="string">'/'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在返回书架页面前，这里将标题栏和菜单栏的状态设置为不显示，防止下次进入阅读页面时菜单栏默认显示。</p>
+<p><code>Guide.vue</code> 中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">openBook (index) &#123;</span><br><span class="line">    localStorage.setItem(<span class="string">'defaultBook'</span>, <span class="string">'/static/library/'</span> + <span class="keyword">this</span>.bookList[index] + <span class="string">'.epub'</span>)</span><br><span class="line">    <span class="keyword">this</span>.$router.push(<span class="string">'/ebook'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>router.push()</code> 属于编程式的导航：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(location, onComplete?, onAbort?)</span><br></pre></td></tr></table></figure>
+<p><code>location</code> 参数可以是直接是一个字符串路径，也可以是一个对象，对象中指定 <code>path</code> 即可进行链接(params 会被忽略)，如果在路由实例中进行了路由的命名，可以指定 <code>name</code> 属性进行该名称绑定链接的访问：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">'home'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.push(&#123; <span class="attr">path</span>: <span class="string">'home'</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 命名的路由</span></span><br><span class="line">router.push(&#123; <span class="attr">name</span>: <span class="string">'user'</span> &#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>router.go()</code> 很常用的编程式的导航方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.go(n)</span><br></pre></td></tr></table></figure>
+<p>n 是一个整数，意思是在 history 记录中向前或者后退多少步。</p>
+<p>相对应的，使用 <code>&lt;router-link&gt;</code> 创建 a 标签(href=”#”)来定义导航链接的方法就是声明式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/bar"</span>&gt;</span>Go to Bar<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

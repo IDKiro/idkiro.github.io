@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——状态管理"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——状态管理</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-12</span>
+            <span class="time">13:26:37</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为 Vue 项目的状态管理。</p>
+<a id="more"></a>
+<h1 id="状态管理"><a href="#状态管理" class="headerlink" title="状态管理"></a>状态管理</h1><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式。</p>
+<p><code>store</code> 文件夹下的 <code>index.js</code> 文件为状态管理组件的入口文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> state <span class="keyword">from</span> <span class="string">'./state'</span></span><br><span class="line"><span class="keyword">import</span> getters <span class="keyword">from</span> <span class="string">'./getters'</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  mutations</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>状态管理组件中需要导入并组装 <code>state</code>、<code>getters</code> 和<code>mutations</code> 三个模块：</p>
+<ul>
+<li><code>state</code> 记录了应用大部分的状态，一些严格属于单个组件的状态不需要放入 Vuex</li>
+<li><code>getters</code> 获取 state 的派生状态，包含派生状态的方法或属性</li>
+<li><code>mutations</code> 更改 store 中的状态，包含改变状态的方法</li>
+</ul>
+<p>除此之外常用的还有 <code>actions</code> 和 <code>modules</code>：</p>
+<ul>
+<li><code>actions</code> 提交 mutation，不直接变更状态，处理异步操作</li>
+<li><code>modules</code> store 分割成模块，存放在文件夹 <code>modules</code> 中</li>
+</ul>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p><code>state.js</code> 中包含了供多个组件使用的状态：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> state = &#123;</span><br><span class="line">  bookList: [],</span><br><span class="line">  bookAvailable: <span class="literal">false</span>,</span><br><span class="line">  ifTitleAndMenuShow: <span class="literal">false</span>,</span><br><span class="line">  ifBookMarked: <span class="literal">false</span>,</span><br><span class="line">  navigation: &#123;&#125;,</span><br><span class="line">  bookCurrentLocation: <span class="number">0</span>,</span><br><span class="line">  bookmarks: <span class="literal">undefined</span>,</span><br><span class="line">  defaultFontSize: <span class="number">16</span>,</span><br><span class="line">  defaultTheme: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> state</span><br></pre></td></tr></table></figure>
+<p>组件可以通过 <code>this.$store</code> 访问到 <code>store</code> 实例，使用 <code>this.$store.state</code> 获取Vuex中的状态。组件获取 <code>store</code> 实例中的状态时，一般使用计算属性，<code>TitleBar.vue</code> 就存在以下计算属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  ifTitleAndMenuShow () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.state.ifTitleAndMenuShow</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>计算属性会基于依赖进行缓存，只在相关依赖发生改变时它们才会重新求值，可以防止每次渲染都进行调用，减小开销。通过计算属性，获取标题栏显示状态就不需要获取 <code>$store.state.ifTitleAndMenuShow</code>，获取计算属性 <code>ifTitleAndMenuShow</code> 即可。</p>
+<h2 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h2><p>为了使得一些 <code>state</code> 中的状态的派生状态可以复用，便在 <code>store</code> 中定义 <code>getter</code>。<code>getter</code> 的返回值和计算属性一样，会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。比如本项目从 <code>state</code> 中的 <code>bookList</code> 派生出去除重复书签的 <code>bookList</code>，<code>getter</code> 接受 state 作为其第一个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getters = &#123;</span><br><span class="line">  bookList: <span class="function"><span class="params">state</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(state.bookList))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> getters</span><br></pre></td></tr></table></figure>
+<p><code>Guide.vue</code> 中便使用 <code>this.$store.getters.bookList</code> 获取了派生出的去重 <code>bookList</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  bookList () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.bookList</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h2><p>Vue 不推荐直接改变 <code>store</code> 中的状态，需要改变 <code>store</code> 中的状态只能显式地提交 <code>mutation</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">store.commit(<span class="string">'handler'</span>)</span><br></pre></td></tr></table></figure>
+<p>其中 <code>handler</code> 表示 <code>mutation</code> 的回调函数，比如本项目中用于改变电子书加载状态的 回调函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  setBookAvailable (state, val) &#123;</span><br><span class="line">    state.bookAvailable = val</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> mutations</span><br></pre></td></tr></table></figure>
+<p><code>Ebook.vue</code> 中提交 <code>mutation</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$store.commit(<span class="string">'setBookAvailable'</span>, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<p>提交 mutation 时会接受 <code>state</code> 作为第一个参数，向 <code>store.commit</code> 传入额外的参数称为载荷，其一般为对象，<code>setBookAvailable (state, val)</code> 中的 <code>val</code> 即是该 <code>mutation</code> 的载荷。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

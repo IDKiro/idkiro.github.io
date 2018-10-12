@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——项目全局样式"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——项目全局样式</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-12</span>
+            <span class="time">13:26:37</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为 Vue 项目的项目全局样式。</p>
+<a id="more"></a>
+<h1 id="项目全局样式"><a href="#项目全局样式" class="headerlink" title="项目全局样式"></a>项目全局样式</h1><h2 id="设置全局样式"><a href="#设置全局样式" class="headerlink" title="设置全局样式"></a>设置全局样式</h2><p>本项目将样式文件夹 <code>styles</code> 全部放在<code>\src\asset\</code> 中：</p>
+<img src="/2018/10/12/VuejsEbook3/4.png">
+<h3 id="图标样式"><a href="#图标样式" class="headerlink" title="图标样式"></a>图标样式</h3><p>其中 <code>icon.css</code> 对应之前下载的图标组件的 <code>style.css</code>， <code>fonts</code> 则对应之前下载的图标组件的 <code>fonts</code>。</p>
+<h3 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h3><p><code>reset.scss</code> 文件用于减少浏览器的不同导致的样式差别，直接在复制一份到该目录下即可：</p>
+<p><a href="https://meyerweb.com/eric/tools/css/reset/" target="_blank" rel="noopener">https://meyerweb.com/eric/tools/css/reset/</a></p>
+<p>这里为了字体的美观在 <code>reset.scss</code> 文件中添加了以下一段代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>, <span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>,Helvetica,<span class="string">"PingFang SC"</span>,<span class="string">"Hiragino Sans GB"</span>,<span class="string">"Microsoft YaHei"</span>,<span class="string">"å¾®è½¯é›…é»‘"</span>,Arial,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用的 <code>font-family</code> 为 element-ui 推荐的字体列表：</p>
+<p><a href="http://element-cn.eleme.io/#/zh-CN/component/typography" target="_blank" rel="noopener">http://element-cn.eleme.io/#/zh-CN/component/typography</a></p>
+<p><code>global.scss</code> 则为全局可用的样式表：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 导入 `reset.scss` */</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">"reset"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义 `px2rem` 函数 */</span></span><br><span class="line">$fontSize : 36;</span><br><span class="line">@<span class="keyword">function</span> px2rem($px) &#123;</span><br><span class="line">  @<span class="keyword">return</span> ($px / $fontSize) + rem;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 定义居中样式缩写 */</span></span><br><span class="line">@<span class="keyword">mixin</span> center() &#123;</span><br><span class="line">  <span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line">  <span class="selector-tag">justify-content</span>: <span class="selector-tag">center</span>;</span><br><span class="line">  <span class="selector-tag">align-items</span>: <span class="selector-tag">center</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 设置图标默认样式 */</span></span><br><span class="line"><span class="selector-class">.icon</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#555555</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="built_in">px2rem</span>(20);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>px2rem</code> 函数用于将 px 单位的大小转换为 rem 单位（1rem = 1倍根节点字体大小）的大小，查看本项目的 <code>App.vue</code> 可以看到增加了以下一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 动态调整根节点字体</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">'html'</span>)</span><br><span class="line">  <span class="keyword">let</span> fontSize = <span class="built_in">window</span>.innerWidth / <span class="number">10</span></span><br><span class="line">  fontSize = fontSize &gt; <span class="number">48</span> ? <span class="number">48</span> : fontSize</span><br><span class="line">  html.style.fontSize = fontSize + <span class="string">'px'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这段代码是为了根据屏幕的宽度动态调整根节点字体的大小，让不同屏幕宽度的设备都有较好的字体显示效果。但是其他元素如果直接用 px 为单位进行样式的设置，那么就会使得字体和元素的大小不成比例，所以在全局样式中提供了 <code>px2rem</code> 函数，使得样式和字体有较好的一致性。</p>
+<h3 id="element-ui-主题"><a href="#element-ui-主题" class="headerlink" title="element-ui 主题"></a>element-ui 主题</h3><p>element-ui 默认主题的颜色为蓝色，为了和项目颜色一致，需要改变 element-ui 主题的颜色，官方提供了在线工具：</p>
+<p><a href="https://elementui.github.io/theme-chalk-preview/#/zh-CN" target="_blank" rel="noopener">https://elementui.github.io/theme-chalk-preview/#/zh-CN</a></p>
+<p>将下载的压缩包解压后得到的文件放在 <code>theme</code> 文件夹即可。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
