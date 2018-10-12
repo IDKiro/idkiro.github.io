@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——标题栏"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——标题栏</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-12</span>
+            <span class="time">18:02:40</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为阅读器主界面中标题栏的实现。</p>
+<a id="more"></a>
+<h1 id="TitleBar-vue-标题栏"><a href="#TitleBar-vue-标题栏" class="headerlink" title="TitleBar.vue: 标题栏"></a>TitleBar.vue: 标题栏</h1><p>电子书阅读器主界面的标题栏的实现。</p>
+<h3 id="Feature"><a href="#Feature" class="headerlink" title="Feature"></a>Feature</h3><ol>
+<li>返回</li>
+<li>添加/去除书签</li>
+</ol>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><ol>
+<li>搜索</li>
+</ol>
+<h2 id="页面构成"><a href="#页面构成" class="headerlink" title="页面构成"></a>页面构成</h2><p>标题栏的构成非常简单，左边按钮组内现在只有一个返回功能，右边按钮组现在只有一个书签功能。点击返回按钮可以返回到书架，点击书签则可以添加或删去书签。通过判断该页面是否被标记书签，使用 <code>v-if</code> 和 <code>v-else</code> 决定是否渲染添加或删去书签的按钮，同一状态只会显示其中一个按钮。其中，返回按钮的功能实现在路由管理器中记录。</p>
+<h2 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h2><p>添加书签要调用 epub.js 解析的电子书对象，所以调用方法都使用 <code>$emit</code> 组件进行事件的触发，让父组件监听到事件进而执行父组件的方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">addBookmark () &#123;</span><br><span class="line">  <span class="keyword">this</span>.$emit(<span class="string">'addBookmark'</span>)</span><br><span class="line">&#125;,</span><br><span class="line">removeBookmark () &#123;</span><br><span class="line">  <span class="keyword">this</span>.$emit(<span class="string">'removeBookmark'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">title-bar</span> @<span class="attr">addBookmark</span>=<span class="string">"addBookmark"</span></span></span><br><span class="line"><span class="tag">            @<span class="attr">removeBookmark</span>=<span class="string">"removeBookmark"</span>&gt;</span><span class="tag">&lt;/<span class="name">title-bar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>父组件的书签实现方法中的书签添加删除、书签已添加判定和标题栏组件有关。</p>
+<p>加载定位完成后，可以用epub.js提供的 <code>rendition.currentLocation()</code> 方法来生成当前定位的相关信息，包括当前位置的开始和结束位置的 cfi(epub 的标记方法)。epub.js提供的 <code>display</code>方法的对象可以是 cfi，<code>display(cfi)</code> 可以直接显示该 cfi 所标记的电子书文本。那么书签就可以定义为一个数组，将要添加书签处的开始的 cfi 添加进数组中即可。 同样，为了保存用户的书签，需要将书签数组保存至 <code>localStorage</code>。因为 <code>cookie</code> 和 <code>localStorage</code> 都只保存字符串，所以需要使用 <code>JSON</code> 模块来进行转换。添加书签后，直接将书签的状态设置为已添加，此时添加书签按钮变成移除书签按钮。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">addBookmark () &#123;</span><br><span class="line">  <span class="keyword">let</span> currentCfi = <span class="keyword">this</span>.rendition.currentLocation()</span><br><span class="line">  currentCfi = currentCfi.start.cfi</span><br><span class="line">  <span class="keyword">let</span> currentContents = <span class="keyword">this</span>.rendition.getContents()</span><br><span class="line">  currentContents = currentContents[<span class="number">0</span>].document.title</span><br><span class="line">  <span class="keyword">let</span> currentBookmark = &#123;<span class="attr">cfi</span>: currentCfi, <span class="attr">title</span>: currentContents&#125;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">this</span>.bookmarks) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'setBookmarks'</span>, [])</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.$store.commit(<span class="string">'pushBookmark'</span>, currentBookmark)</span><br><span class="line">  localStorage.setItem(localStorage.getItem(<span class="string">'defaultBook'</span>), <span class="built_in">JSON</span>.stringify(<span class="keyword">this</span>.bookmarks))</span><br><span class="line">  <span class="keyword">this</span>.$store.commit(<span class="string">'setBookMarked'</span>, <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>移除书签的方法则和添加书签相反，先读取书签，再对比书签中和当前页面 cfi 一致的项，调用方法进行数组元素的删除即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">removeBookmark () &#123;</span><br><span class="line">  <span class="keyword">let</span> currentCfi = <span class="keyword">this</span>.rendition.currentLocation()</span><br><span class="line">  currentCfi = currentCfi.start.cfi</span><br><span class="line">  <span class="keyword">this</span>.bookmarks.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (item.cfi === currentCfi) &#123;</span><br><span class="line">      <span class="keyword">this</span>.$store.commit(<span class="string">'spliceBookmark'</span>, index)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.bookmarks.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'setBookmarks'</span>, <span class="literal">undefined</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.$store.commit(<span class="string">'setBookMarked'</span>, <span class="literal">false</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每当页面改变时，都要进行当前页是否加入书签的判断，来决定显示添加书签的按钮还是显示移除书签的按钮。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">isBookMarked () &#123;</span><br><span class="line">  <span class="keyword">let</span> currentCfi = <span class="keyword">this</span>.rendition.currentLocation()</span><br><span class="line">  currentCfi = currentCfi.start.cfi</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.bookmarks) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'setBookMarked'</span>, <span class="keyword">this</span>.bookmarks.some(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> item.cfi === currentCfi</span><br><span class="line">    &#125;))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="切换动画"><a href="#切换动画" class="headerlink" title="切换动画"></a>切换动画</h2><p>标题栏的显示通过父组件控制存储状态进行控制。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title-wrapper"</span> <span class="attr">v-show</span>=<span class="string">"ifTitleAndMenuShow"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Vue 在更新 DOM 时可以添加过渡动画，最常用的过渡使用 CSS 过渡。</p>
+<p>需要应用过渡动画的元素需要用 <code>transition</code> 标签的元素进行包裹，并且制定过渡动画的 <code>name</code> 属性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">transition</span> <span class="attr">name</span>=<span class="string">"slide-down"</span>&gt;</span><span class="tag">&lt;/<span class="name">transition</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>因为 <code>transition</code> 标签元素包裹着应用动画的元素，需要使用 <code>&amp;.</code> 定位到父元素。该 CSS 过渡动画定义了进入前、进入后的动画状态以及动画的形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="selector-class">.slide-down-enter</span>, &amp;<span class="selector-class">.slide-down-leave-to</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, -100%, 0);</span><br><span class="line">&#125;</span><br><span class="line">&amp;<span class="selector-class">.slide-down-enter-to</span>, &amp;<span class="selector-class">.slide-down-leave</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">&#125;</span><br><span class="line">&amp;<span class="selector-class">.slide-down-enter-active</span>, &amp;<span class="selector-class">.slide-down-leave-active</span> &#123;</span><br><span class="line">  <span class="attribute">transition</span>: all .<span class="number">3s</span> linear;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>标题栏在移入前和移除后都处于页面外，移入后则处于页面的最上方，动画使用直线移动即可。</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
