@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——Vue 项目简述"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——Vue 项目简述</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-12</span>
+            <span class="time">13:13:10</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为 Vue 项目的基本知识。</p>
+<a id="more"></a>
+<h1 id="Vue-项目简述"><a href="#Vue-项目简述" class="headerlink" title="Vue 项目简述"></a>Vue 项目简述</h1><p>首先了解下Vue项目的一些基本知识。</p>
+<h2 id="项目的结构"><a href="#项目的结构" class="headerlink" title="项目的结构"></a>项目的结构</h2><p>先看一下项目的文件目录，知道哪些文件和文件夹是供我们编辑的：</p>
+<img src="/2018/10/12/VuejsEbook2/1.png">
+<h3 id="文件夹"><a href="#文件夹" class="headerlink" title="文件夹"></a>文件夹</h3><ul>
+<li><code>src</code> 文件夹，包含了整个应用所有的代码源文件，是整个项目最重要的部分</li>
+<li><code>config</code> 文件夹，项目参数</li>
+<li><code>static</code> 静态资源文件夹</li>
+</ul>
+<p>因为 <code>src</code> 是程序的本体，所以讲一下里面的文件结构：</p>
+<img src="/2018/10/12/VuejsEbook2/3.png">
+<p><code>asset</code> 为资源文件夹，保存图片这类供程序调用的文件，也可以保存一些全局有效的样式。</p>
+<p><code>components</code> 为组件文件夹，Vue 有一个很重要的概念————组件，组件可以和其他语言的类或者函数做类比，它一方面可以方便代码的复用，另一方面可以减小单文件的长度，让代码更简洁。</p>
+<p><code>router</code> 为路由文件夹，对应 <code>vue-router</code> 库，<code>vue-router</code> 用于将各个页面（组件）连接起来，提供在不同的页面（组件）间切换的功能。</p>
+<p>如果按照默认配置，那么文件夹里没有 <code>store</code> 这个文件夹，该文件夹需要安装 <code>Vuex</code> 后才能使用。<code>Vuex</code> 用于管理应用的状态，可以理解成将程序的状态相关的变量集中存储于 <code>state</code> 文件夹的 js 文件中。</p>
+<h3 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h3><p><strong>根目录文件：</strong></p>
+<ul>
+<li><code>index.html</code> 主页面文件，由Vue来渲染</li>
+<li><code>package.json</code> 项目所使用的依赖包</li>
+</ul>
+<p><strong><code>src</code> 文件夹下文件：</strong></p>
+<ul>
+<li><code>main.js</code> 入口文件，初始化实例，导入全局可用的模块</li>
+<li><code>App.vue</code> 总组件文件，调用组件来进行页面的渲染，可以在此处定义所有页面共用的脚本和样式</li>
+</ul>
+<p><strong><code>config</code> 文件夹下文件：</strong></p>
+<ul>
+<li><code>index.js</code> index页面的参数</li>
+</ul>
+<h2 id="文件调用简述"><a href="#文件调用简述" class="headerlink" title="文件调用简述"></a>文件调用简述</h2><p>首先是 <code>index.html</code> 文件，查看 <code>&lt;body&gt;</code> 标签部分：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- built files will be auto injected --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相对应的，<code>mian.js</code> 中的 Vue 实例创建部分：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  router,</span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>index.html</code> 中的 <code>id=&quot;app&quot;</code> 与 <code>mian.js</code> 中的 <code>el: &#39;#app&#39;</code> 的相对应，两者会在实例创建时进行替换（查看<a href="#lifecycle">生命周期图示</a>），相当于创建的实例会嵌入到 <code>index.html</code> 中。</p>
+<p>再次看 <code>mian.js</code> 中的这段代码，其中 <code>components: { App }</code> 指定了该入口文件包含的组件，这个组件也就是整个应用的总组件 <code>App.vue</code>，其通过 <code>export</code> 进行暴露供其他组件调用。</p>
+<p>这样，通过编辑 <code>App.vue</code> 以及该文件包含的子组件便可编辑页面显示的实际内容。</p>
+<h2 id="Vue-文件简述"><a href="#Vue-文件简述" class="headerlink" title="Vue 文件简述"></a>Vue 文件简述</h2><p>Vue 从扩展名就可以看出，其是 Vue 项目的独有文件，并且也是 Vue 项目内容的最主要组成部分。</p>
+<p>我们打开 <code>App.vue</code> 文件来最简单的认识一下 Vue 文件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">router-view</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'App'</span></span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  #app &#123;</span></span><br><span class="line"><span class="undefined">    font-family: 'Avenir', Helvetica, Arial, sans-serif;</span></span><br><span class="line"><span class="undefined">    -webkit-font-smoothing: antialiased;</span></span><br><span class="line"><span class="undefined">    -moz-osx-font-smoothing: grayscale;</span></span><br><span class="line"><span class="undefined">    text-align: center;</span></span><br><span class="line"><span class="undefined">    color: #2c3e50;</span></span><br><span class="line"><span class="undefined">    margin-top: 60px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>很清晰的可以看到代码分为三个部分，分别由三个标签 <code>&lt;template&gt;</code>、<code>&lt;script&gt;</code>、<code>&lt;style&gt;</code> 包裹。三个部分分别对应 HTML、Javascript 和 CSS，三种语言的代码在各自的标签内进行编写。简单地讲，可以把 Vue 文件理解为将三种语言编写在同一文档中，并赋予一些新的特性。</p>
+<h2 id="Vue-的常用指令"><a href="#Vue-的常用指令" class="headerlink" title="Vue 的常用指令"></a>Vue 的常用指令</h2><p>最常用的指令有两个：</p>
+<ul>
+<li><code>v-bind</code>: 特性的绑定</li>
+<li><code>v-on</code>： 事件的监听</li>
+</ul>
+<p>这两个指令都有着对应的缩写，<code>v-bind</code> 的缩写是 <code>:</code>，<code>v-on</code> 的缩写是 <code>@</code>，比如 <code>&lt;img v-bind:src=&quot;imageSrc&quot;&gt;</code> 缩写为 <code>&lt;img :src=&quot;imageSrc&quot;&gt;</code>，<code>&lt;button v-on:click=&quot;doThis&quot;&gt;&lt;/button&gt;</code> 缩写为 <code>&lt;button @click=&quot;doThis&quot;&gt;&lt;/button&gt;</code>。</p>
+<p>除此之外，常用的指令还有：</p>
+<ul>
+<li><code>v-if</code> &amp; <code>v-else</code>: 条件渲染，先判断条件再决定是否渲染</li>
+<li><code>v-show</code>: 条件渲染，先渲染后决定是否显示</li>
+<li><code>v-for</code>: 基于数据渲染多个同类元素</li>
+</ul>
+<h2 id="Vue-的数据和选项"><a href="#Vue-的数据和选项" class="headerlink" title="Vue 的数据和选项"></a>Vue 的数据和选项</h2><h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><p>组件的数据对象，能够响应数据变化，在实例中可以定义为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  message: <span class="string">'Hello Vue!'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当组件作为模块进行编程时，<code>data</code> 的对象必须是函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">a</span>: <span class="number">1</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是为了防止数据污染，此时 <code>return</code> 的对象则为实际调用的 <code>data</code> 对象。</p>
+<h3 id="props"><a href="#props" class="headerlink" title="props"></a>props</h3><p>用于接收父组件传过来的数据，可以是对象或者数组，一般可以写成如下格式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">props: &#123;</span><br><span class="line">  height: <span class="built_in">Number</span>,</span><br><span class="line">  age: &#123;</span><br><span class="line">    type: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="keyword">default</span>: <span class="number">0</span>,</span><br><span class="line">    required: <span class="literal">true</span>,</span><br><span class="line">    validator: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> value &gt;= <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写成对象时一般会添加类型监测。</p>
+<p>父组件向子组件进行传值则需要用 <code>v-bind</code> 进行属性的绑定：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:height</span>=<span class="string">"val"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">:age</span>=<span class="string">"obj"</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h3><p><code>methods</code> 是供实例调用的方法，方法中的 <code>this</code> 自动绑定为 Vue 实例，绝大部分的函数都写在 <code>methods</code> 中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">methods: &#123;</span><br><span class="line">  plus () &#123;</span><br><span class="line">    <span class="keyword">this</span>.a++</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>子组件可以通过 <code>$emit( eventName, […args] )</code> 调用父组件的方法，父组件需要使用 <code>v-on</code> 监听子组件触发的事件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'welcome'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"emit-example-simple"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">welcome-button</span> <span class="attr">v-on:welcome</span>=<span class="string">"sayHi"</span>&gt;</span><span class="tag">&lt;/<span class="name">welcome-button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h3><p>计算属性中的属性可以在其被调用时返回所需的属性值，相当于一个依赖于其他属性的 <code>data</code>。</p>
+<p>以下代码相当于当有调用 <code>reversedMessage</code> 这个属性的时候，返回一个反转字符串的值：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  reversedMessage: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.message.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法虽然也可以做到相同的效果，但是计算属性会进行缓存，只有在依赖属性被更新的时才触发属性内的函数。</p>
+<p><span id="lifecycle"></span></p>
+<h2 id="Vue-的生命周期"><a href="#Vue-的生命周期" class="headerlink" title="Vue 的生命周期"></a>Vue 的生命周期</h2><p>生命周期也是 Vue 中很重要的概念，表示 Vue 的实例从创建到销毁的过程，每个生命周期的阶段都可以执行一个钩子函数。</p>
+<img src="/2018/10/12/VuejsEbook2/lifecycle.jpg">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
