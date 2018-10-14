@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Vue.js 入门学习笔记：电子书阅读器——目录和书签"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Vue.js 入门学习笔记：电子书阅读器——目录和书签</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-10-14</span>
+            <span class="time">20:45:02</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/文档/">文档</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/开发/">#开发</a> <a class="tag" href="/tags/阅读器/">#阅读器</a> <a class="tag" href="/tags/网页应用/">#网页应用</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>自行开发的网页端电子书阅读器，本系列用于记录开发过程中的各种问题，本文为阅读器主界面中菜单栏中目录和书签的实现。</p>
+<a id="more"></a>
+<h1 id="Content-vue-目录和书签"><a href="#Content-vue-目录和书签" class="headerlink" title="Content.vue: 目录和书签"></a>Content.vue: 目录和书签</h1><p>电子书阅读器主界面的菜单栏中目录和书签的实现。</p>
+<h2 id="页面构成"><a href="#页面构成" class="headerlink" title="页面构成"></a>页面构成</h2><p>目录和书签组件顶部部分为目录/书签切换按钮，主体部分为目录和书签的内容。</p>
+<h2 id="目录和书签切换"><a href="#目录和书签切换" class="headerlink" title="目录和书签切换"></a>目录和书签切换</h2><p>目录和书签切换时的显示效果改变和主题切换时一个思路，通过绑定 <code>class</code> 和相应的点击调用函数来实现样式的改变。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-bookmark"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"changeTag"</span> <span class="attr">:class</span>=<span class="string">"&#123;'selected': chooseContentOrBookmark === true&#125;"</span> @<span class="attr">click</span>=<span class="string">"chooseContent"</span>&gt;</span>目录<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"changeTag"</span> <span class="attr">:class</span>=<span class="string">"&#123;'selected': chooseContentOrBookmark === false&#125;"</span> @<span class="attr">click</span>=<span class="string">"chooseBookmark"</span>&gt;</span>书签<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>通过 <code>v-show</code> 指令和 <code>chooseContentOrBookmark</code> 决定目录和书签的显示与否。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chooseContent () &#123;</span><br><span class="line">  <span class="keyword">this</span>.chooseContentOrBookmark = <span class="literal">true</span></span><br><span class="line">&#125;,</span><br><span class="line">chooseBookmark () &#123;</span><br><span class="line">  <span class="keyword">this</span>.chooseContentOrBookmark = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>背景颜色可以参考 Element-UI 提供的RGB值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="selector-class">.selected</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#F2F6FC</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>目录的列表渲染和主题的列表渲染方式一致，使用 <code>v-for</code> 指令监听列表项的点击事件。<code>Ebook</code> 组件生成 <code>navigation</code> 后保存在 <code>state</code> 中，并使用计算属性进行调用。遍历导航中的目录属性 <code>navigation.toc</code> 即可获取目录的标题和对应的位置链接。为了在目录未生成时显示提示，需要使用 <code>v-if</code> 和 <code>v-else</code> 进行条件渲染。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-wrapper"</span> <span class="attr">v-if</span>=<span class="string">"bookAvailable"</span> <span class="attr">v-show</span>=<span class="string">"chooseContentOrBookmark"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">vue-scroll</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(item, index) in navigation.toc"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">click</span>=<span class="string">"jumpTo(item.href)"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span>&#123;&#123;item.label&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">vue-scroll</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"empty"</span> <span class="attr">v-else</span> <span class="attr">v-show</span>=<span class="string">"chooseContentOrBookmark"</span>&gt;</span>加载中...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>jumpTo</code> 方法即目录的跳转方法，参数为目标链接。因为 <code>jumpTo</code> 方法在 <code>Ebook</code> 组件中，所以需要先调用父组件 <code>MenuBar</code> 的同名方法，再调用父组件的父组件的同名方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jumpTo (href) &#123;</span><br><span class="line">  <span class="keyword">this</span>.rendition.display(href)</span><br><span class="line">  <span class="keyword">this</span>.hideTitleAndMenu()</span><br><span class="line">  <span class="keyword">this</span>.pageChanged()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="书签"><a href="#书签" class="headerlink" title="书签"></a>书签</h2><p>书签和目录的方法基本一致。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-wrapper"</span> <span class="attr">v-if</span>=<span class="string">"bookmarks"</span> <span class="attr">v-show</span>=<span class="string">"!chooseContentOrBookmark"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">vue-scroll</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content-item"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">v-for</span>=<span class="string">"(item, index) in bookmarks"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:key</span>=<span class="string">"index"</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">click</span>=<span class="string">"turnMarkPage(index)"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"text"</span>&gt;</span>&#123;&#123;item.title&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">vue-scroll</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"empty"</span> <span class="attr">v-else</span> <span class="attr">v-show</span>=<span class="string">"!chooseContentOrBookmark"</span>&gt;</span>您还没有添加书签哦~<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里条件渲染则是根据书签有没有被定义，在 <code>Ebook</code> 组件中 <code>bookmarks</code> 只有在存在项时才定义为数组，为空时定义为 <code>undefined</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!<span class="keyword">this</span>.bookmarks) &#123;</span><br><span class="line">  <span class="keyword">this</span>.$store.commit(<span class="string">'setBookmarks'</span>, [])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">this</span>.bookmarks.length &lt; <span class="number">1</span>) &#123;</span><br><span class="line">  <span class="keyword">this</span>.$store.commit(<span class="string">'setBookmarks'</span>, <span class="literal">undefined</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>书签的跳转方法则类似于进度条跳转，使用的是 CFI。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">turnMarkPage (index) &#123;</span><br><span class="line">  <span class="keyword">this</span>.rendition.display(<span class="keyword">this</span>.bookmarks[index].cfi)</span><br><span class="line">  <span class="keyword">this</span>.hideTitleAndMenu()</span><br><span class="line">  <span class="keyword">this</span>.pageChanged()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="切换动画"><a href="#切换动画" class="headerlink" title="切换动画"></a>切换动画</h2><p>目录的切换动画和标题栏、菜单栏完全一致，只需要将方向从纵轴改为横轴即可。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="selector-class">.slide-right-enter</span>, &amp;<span class="selector-class">.slide-right-leave-to</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(-100%, 0, 0);</span><br><span class="line">&#125;</span><br><span class="line">&amp;<span class="selector-class">.slide-right-enter-to</span>, &amp;<span class="selector-class">.slide-right-leave</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(0, 0, 0);</span><br><span class="line">&#125;</span><br><span class="line">&amp;<span class="selector-class">.slide-right-enter-active</span>, &amp;<span class="selector-class">.slide-right-leave-active</span> &#123;</span><br><span class="line">    <span class="attribute">transition</span>: all .<span class="number">3s</span> linear;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
