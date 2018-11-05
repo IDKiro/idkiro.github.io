@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="IDKiro">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Action Recognition PyTorch"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="IDKiro&#39;s Pages"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://www.idkiro.xyz"/>
+  
+    <link rel="alternate" href="/atom.xml" title="IDKiro&#39;s Pages" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>IDKiro's Pages</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  
+  <link rel="stylesheet" href="/css/style.light.css">
+
+  <!-- Google Analytics -->
+  
+
+</head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/MGS.png)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Action Recognition PyTorch</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  Home
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="http://ss.idkiro.xyz">
+                  
+                  Network
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/IDKiro">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="mailto:609568960@qq.com">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By IDKiro</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2018-11-05</span>
+            <span class="time">13:06:54</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/编程/">编程</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/机器学习/">#机器学习</a> <a class="tag" href="/tags/pytorch/">#pytorch</a> <a class="tag" href="/tags/动作识别/">#动作识别</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>The network are based on CNNs and LSTMs.</p>
+<a id="more"></a>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><p>Python 3.6.5 (Anaconda 5.2.0):</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<p>pytorch 0.4.1 (CUDA 9.0):</p>
+<p><a href="https://pytorch.org/" target="_blank" rel="noopener">https://pytorch.org/</a></p>
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p>The training dataset structure:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~/</span><br><span class="line">  data/</span><br><span class="line">    train_data/</span><br><span class="line">      .../ (directories of class names)</span><br><span class="line">        .../ (directories of video names)</span><br><span class="line">          ... (jpg files)</span><br><span class="line">    valid_data/</span><br><span class="line">      .../ (directories of class names)</span><br><span class="line">        .../ (directories of video names)</span><br><span class="line">          ... (jpg files)</span><br><span class="line">    save_model/</span><br><span class="line">      save_100.pth</span><br></pre></td></tr></table></figure>
+<p>The test dataset structure:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/</span><br><span class="line">  test_data/</span><br><span class="line">    .../ (directories of class names)</span><br><span class="line">      .../ (directories of video names)</span><br><span class="line">        ... (jpg files)</span><br></pre></td></tr></table></figure>
+<p>The data structure of the video training dataset:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">video_data/</span><br><span class="line">      .../ (directories of class names)</span><br><span class="line">        ... (avi files)</span><br></pre></td></tr></table></figure>
+<p>Use <code>video2jpg.py</code> under the <code>utils</code> folder to convert avi to jpg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python video2jpg.py video_root_directory image_root_directory</span><br></pre></td></tr></table></figure>
+<p>Use <code>split_data.py</code> to move some of the training dataset to a validation dataset:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python split_data.py train_root_directory valid_root_directory</span><br></pre></td></tr></table></figure>
+<h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p>Use the following command to train the model:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train.py data</span><br></pre></td></tr></table></figure>
+<p>Optional parameters of command:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">--model DIR           path to model</span><br><span class="line">--arch ARCH           model architecture (default: alexnet)</span><br><span class="line">--lstm-layers LSTM    number of lstm layers (default: 1)</span><br><span class="line">--hidden-size HIDDEN  output size of LSTM hidden layers (default: 512)</span><br><span class="line">--fc-size FC_SIZE     size of fully connected layer before LSTM (default:</span><br><span class="line">                      1024)</span><br><span class="line">--epochs N            manual epoch number (default: 100)</span><br><span class="line">--lr LR               initial learning rate (default: 0.001)</span><br><span class="line">--optim OPTIM         optimizer (default: sgd)</span><br><span class="line">--momentum M          momentum (default: 0.9)</span><br><span class="line">--lr-step LR_STEP     learning rate decay frequency (default: 30)</span><br><span class="line">--batch-size N        mini-batch size (default: 1)</span><br><span class="line">--weight-decay W      weight decay (default: 1e-4)</span><br><span class="line">--workers N           number of data loading workers (default: 8)</span><br></pre></td></tr></table></figure>
+<p>Use the following commands to test:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py data/save_model/model_best.pth.tar test_data</span><br></pre></td></tr></table></figure>
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><p>This project is based on CNNs and LSTMs. </p>
+<div align="center"><br>  <img src="/2018/11/05/MachineLearning/lstm.jpg"><br></div>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://github.com/chaoyuaw/pytorch-coviar.git" target="_blank" rel="noopener">https://github.com/chaoyuaw/pytorch-coviar.git</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          Theme By <a target="_blank" href="https://github.com/levblanc">Levblanc.</a>
+          Inspired By <a target="_blank" href="https://github.com/klugjo/hexo-theme-clean-blog">Clean Blog.</a>
+        <p class="copyright text-muted">
+          Powered By <a target="_blank" href="https://hexo.io/">Hexo.</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+<script src="/js/highlight.pack.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
