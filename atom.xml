@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.idkiro.xyz/"/>
-  <updated>2019-05-17T01:46:58.889Z</updated>
+  <updated>2019-05-17T02:01:39.686Z</updated>
   <id>https://www.idkiro.xyz/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://www.idkiro.xyz/2019/05/17/CBDNet-tensorflow/"/>
     <id>https://www.idkiro.xyz/2019/05/17/CBDNet-tensorflow/</id>
     <published>2019-05-17T01:39:26.000Z</published>
-    <updated>2019-05-17T01:46:58.889Z</updated>
+    <updated>2019-05-17T02:01:39.686Z</updated>
     
-    <content type="html"><![CDATA[<p>An unofficial implementation of CBDNet by Tensorflow.</p><a id="more"></a><p><a href="https://github.com/GuoShi28/CBDNet" target="_blank" rel="noopener">CBDNet in MATLAB</a></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>Download the <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/3140103306_zju_edu_cn/Ec0R2eTtC81Is0KvC5mbomsBw2oJ_oV7jahe1srpgVufcQ?e=aFIc7h" target="_blank" rel="noopener">dataset</a> and pretrained <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/3140103306_zju_edu_cn/Ea3PPzHJWi9LqrNvoMhUZA4BzDCmuLCDBaNgk9u-R5h9Kw?e=jSggJw" target="_blank" rel="noopener">model</a> and decompression the files to <code>dataset</code> and <code>checkpoint</code> folder as follow:</p><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/folder.png"><br></div><p>Train the model on synthetic noisy images :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train_syn.py</span><br></pre></td></tr></table></figure><p>Train the model on real noisy images:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train_real.py</span><br></pre></td></tr></table></figure><p>Test the trained model on DND dataset:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure><h2 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h2><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/CBDNet_v13.png"><br></div><h2 id="Realistic-Noise-Model"><a href="#Realistic-Noise-Model" class="headerlink" title="Realistic Noise Model"></a>Realistic Noise Model</h2><p>Given a clean image <code>x</code>, the realistic noise model can be represented as:</p><p><img src="http://latex.codecogs.com/gif.latex?\\textbf{y}=f(\\textbf{DM}(\\textbf{L}+n(\\textbf{L}" alt="">)))</p><p><img src="http://latex.codecogs.com/gif.latex?n(\\textbf{L}" alt="">=n_s(\textbf{L})+n_c)</p><p>Where <code>y</code> is the noisy image, <code>f(.)</code> is the CRF function and the irradiance <img src="http://latex.codecogs.com/gif.latex?\\textbf{L}=\\textbf{M}f^{-1}(\\textbf{x}" alt="">) , <code>M(.)</code> represents the function that convert sRGB image to Bayer image and <code>DM(.)</code> represents the demosaicing function.</p><p>If considering denosing on compressed images, </p><p><img src="http://latex.codecogs.com/gif.latex?\\textbf{y}=JPEG(f(\\textbf{DM}(\\textbf{L}+n(\\textbf{L}" alt="">))))</p><h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/results.png"><br></div>]]></content>
+    <content type="html"><![CDATA[<p>An unofficial implementation of CBDNet by Tensorflow.</p><a id="more"></a><p><a href="https://github.com/GuoShi28/CBDNet" target="_blank" rel="noopener">CBDNet in MATLAB</a></p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><p>Download the <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/3140103306_zju_edu_cn/Ec0R2eTtC81Is0KvC5mbomsBw2oJ_oV7jahe1srpgVufcQ?e=aFIc7h" target="_blank" rel="noopener">dataset</a> and pretrained <a href="https://zjueducn-my.sharepoint.com/:u:/g/personal/3140103306_zju_edu_cn/Ea3PPzHJWi9LqrNvoMhUZA4BzDCmuLCDBaNgk9u-R5h9Kw?e=jSggJw" target="_blank" rel="noopener">model</a> and decompression the files to <code>dataset</code> and <code>checkpoint</code> folder as follow:</p><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/folder.png"><br></div><p>Train the model on synthetic noisy images :</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train_syn.py</span><br></pre></td></tr></table></figure><p>Train the model on real noisy images:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python train_real.py</span><br></pre></td></tr></table></figure><p>Test the trained model on DND dataset:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python test.py</span><br></pre></td></tr></table></figure><h2 id="Network-Structure"><a href="#Network-Structure" class="headerlink" title="Network Structure"></a>Network Structure</h2><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/CBDNet_v13.png"><br></div><h2 id="Realistic-Noise-Model"><a href="#Realistic-Noise-Model" class="headerlink" title="Realistic Noise Model"></a>Realistic Noise Model</h2><p>Given a clean image <code>x</code>, the realistic noise model can be represented as:</p><p><img src="https://camo.githubusercontent.com/74212733f224693f8a4d25c8ebc4394510e87ea0/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f253543746578746266253742792537443d6628253543746578746266253742444d253744282535437465787462662537424c2537442b6e282535437465787462662537424c253744292929" alt=""></p><p><img src="https://camo.githubusercontent.com/a68a259a155f66ca51a7178ffd298c08e8833e7b/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f6e282535437465787462662537424c253744293d6e5f73282535437465787462662537424c253744292b6e5f63" alt=""></p><p>Where <code>y</code> is the noisy image, <code>f(.)</code> is the CRF function and the irradiance <img src="https://camo.githubusercontent.com/3a43ba41dab9bde33aac68118e6ba55706a64632/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f2535437465787462662537424c2537443d2535437465787462662537424d253744662535452537422d31253744282535437465787462662537427825374429" alt=""> , <code>M(.)</code> represents the function that convert sRGB image to Bayer image and <code>DM(.)</code> represents the demosaicing function.</p><p>If considering denosing on compressed images, </p><p><img src="https://camo.githubusercontent.com/b76298b739465ae824ad8bb8ef0ef2b308464dc9/687474703a2f2f6c617465782e636f6465636f67732e636f6d2f6769662e6c617465783f253543746578746266253742792537443d4a504547286628253543746578746266253742444d253744282535437465787462662537424c2537442b6e282535437465787462662537424c25374429292929" alt=""></p><h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><div align="center"><br>  <img src="/2019/05/17/CBDNet-tensorflow/results.png"><br></div>]]></content>
     
     <summary type="html">
     
@@ -424,11 +424,11 @@
       <category term="教程" scheme="https://www.idkiro.xyz/categories/%E6%95%99%E7%A8%8B/"/>
     
     
-      <category term="ChinaNet" scheme="https://www.idkiro.xyz/tags/ChinaNet/"/>
-    
       <category term="联机" scheme="https://www.idkiro.xyz/tags/%E8%81%94%E6%9C%BA/"/>
     
       <category term="主机游戏" scheme="https://www.idkiro.xyz/tags/%E4%B8%BB%E6%9C%BA%E6%B8%B8%E6%88%8F/"/>
+    
+      <category term="ChinaNet" scheme="https://www.idkiro.xyz/tags/ChinaNet/"/>
     
   </entry>
   
@@ -476,11 +476,11 @@
       <category term="教程" scheme="https://www.idkiro.xyz/categories/%E6%95%99%E7%A8%8B/"/>
     
     
+      <category term="SS" scheme="https://www.idkiro.xyz/tags/SS/"/>
+    
       <category term="联机" scheme="https://www.idkiro.xyz/tags/%E8%81%94%E6%9C%BA/"/>
     
       <category term="主机游戏" scheme="https://www.idkiro.xyz/tags/%E4%B8%BB%E6%9C%BA%E6%B8%B8%E6%88%8F/"/>
-    
-      <category term="SS" scheme="https://www.idkiro.xyz/tags/SS/"/>
     
   </entry>
   
